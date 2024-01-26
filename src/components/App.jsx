@@ -47,7 +47,7 @@ export const App = () => {
   return (
     <div className={css.container}>
       <SearchBar />
-      {/* <ImageGallery /> */}
+
       {images.length > 0 && <ImageGallery items={images} />}
     </div>
   );
