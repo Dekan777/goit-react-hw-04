@@ -27,7 +27,7 @@ export const SearchBar = () => {
                 ref={inputRef}
                 type="text"
                 autoComplete="off"
-                autoFocus="true"
+                autoFocus={true}
                 placeholder="Search images and photos"
                 className={css.inputField}
               />
