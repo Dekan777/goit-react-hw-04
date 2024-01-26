@@ -1,0 +1,11 @@
+.button {
+  flex-shrink: 0;
+  background: rgb(50, 145, 223);
+  border: 0.125rem solid rgb(50, 145, 223);
+  color: #ffffff;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin: 5px;
+}
