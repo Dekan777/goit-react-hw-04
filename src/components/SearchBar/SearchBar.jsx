@@ -2,8 +2,7 @@ import { useRef } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import css from './SearchBar.module.css';
 
-//функцію для передачі значення інпуту під час сабміту форми
-export const SearchBar = () => {
+export const SearchBar = ({ onSearch }) => {
   const inputRef = useRef();
   const handleSumbit = evt => {
     evt.preventDefault();
@@ -13,7 +12,7 @@ export const SearchBar = () => {
       toast.error('Please enter a value');
       return;
     }
-
+    onSearch(inputValue);
     evt.target.reset();
   };
 

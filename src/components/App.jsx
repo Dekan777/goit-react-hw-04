@@ -1,19 +1,14 @@
-// import './App.css';
 import { useState, useEffect } from 'react';
-// import { nanoid } from 'nanoid';
-// import { fetchArticlesWithTopic } from '../unsplash-api';
-
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import css from './App.module.css';
-
 import axios from 'axios';
+axios.defaults.baseURL = 'https://api.unsplash.com/';
 
 export const App = () => {
-  // 1. Оголошуємо стан
   const [images, setImages] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  axios.defaults.baseURL = 'https://api.unsplash.com/';
   useEffect(() => {
     const fetchImages = async () => {
       const clientId = '3Zba2qXtOr_E0rNXT3JHdHzbbWgVSBtiHasHiQngoL8';
@@ -25,7 +20,7 @@ export const App = () => {
           'https://api.unsplash.com/search/photos',
           {
             params: {
-              query: 'audi',
+              query: searchQuery,
               client_id: clientId,
               page: page,
               orientation: orientation,
@@ -33,7 +28,6 @@ export const App = () => {
           }
         );
 
-        // 2. Записуємо дані в стан
         setImages(response.data.results);
       } catch (error) {
         console.error('Error fetching images:', error);
@@ -41,12 +35,15 @@ export const App = () => {
     };
 
     fetchImages();
-  }, []);
-  console.log(images);
+  }, [searchQuery]);
+
+  const handleSearch = inputValue => {
+    setSearchQuery(inputValue);
+  };
 
   return (
     <div className={css.container}>
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
 
       {images.length > 0 && <ImageGallery items={images} />}
     </div>
