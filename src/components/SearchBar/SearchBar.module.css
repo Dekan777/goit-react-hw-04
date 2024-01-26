@@ -1,4 +1,11 @@
+.conteiner {
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .inputContainer {
+  width: 350px;
   display: flex;
   align-items: center;
   border-bottom: 0.125rem solid rgb(50, 145, 223);

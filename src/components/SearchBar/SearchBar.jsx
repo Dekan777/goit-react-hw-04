@@ -13,29 +13,32 @@ export const SearchBar = () => {
       toast.error('Please enter a value');
       return;
     }
+
     evt.target.reset();
   };
 
   return (
     <>
       <header>
-        <form onSubmit={handleSumbit}>
-          <div className={css.inputContainer}>
-            <input
-              ref={inputRef}
-              type="text"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-              className={css.inputField}
-            />
-            <button type="submit" className={css.submitButton}>
-              Search
-            </button>
-          </div>
+        <div className={css.conteiner}>
+          <form onSubmit={handleSumbit}>
+            <div className={css.inputContainer}>
+              <input
+                ref={inputRef}
+                type="text"
+                autoComplete="off"
+                autoFocus="true"
+                placeholder="Search images and photos"
+                className={css.inputField}
+              />
+              <button type="submit" className={css.submitButton}>
+                Search
+              </button>
+            </div>
 
-          <Toaster containerStyle={{ marginTop: 50 }} />
-        </form>
+            <Toaster containerStyle={{ marginTop: 50 }} />
+          </form>
+        </div>
       </header>
     </>
   );
