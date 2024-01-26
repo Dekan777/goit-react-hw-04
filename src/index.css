@@ -1,10 +1,9 @@
 :root {
-  --font-family: 'Roboto', sans-serif;
-  --text-color: #000000c4;
+  font-family: var(--font-family);
+  color: var(--text-color);
 }
 
 body {
   font-family: var(--font-family);
   color: var(--text-color);
-  margin: 0;
 }
