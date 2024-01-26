@@ -1,8 +1,10 @@
 import css from './Btn.module.css';
-export const Btn = () => {
+export const Btn = ({ handleAddPage }) => {
   return (
     <>
-      <button className={css.button}>Load more</button>
+      <button className={css.button} onClick={() => handleAddPage()}>
+        Load more
+      </button>
     </>
   );
 };

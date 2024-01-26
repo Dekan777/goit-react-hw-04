@@ -12,14 +12,19 @@ export const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  // const [search, setSearch] = useState(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchImages = async () => {
       const clientId = '3Zba2qXtOr_E0rNXT3JHdHzbbWgVSBtiHasHiQngoL8';
-      const page = 1;
+
       const orientation = 'landscape';
       const numberPage = 12;
+
+      if (!searchQuery) {
+        return;
+      }
 
       try {
         setError(false);
@@ -30,32 +35,32 @@ export const App = () => {
             params: {
               query: searchQuery,
               client_id: clientId,
-              page: page,
+              page: currentPage,
               orientation: orientation,
               per_page: numberPage,
             },
           }
         );
 
-        setImages(response.data.results);
+        setImages(prevImages => [...prevImages, ...response.data.results]);
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
+        // setSearch(page);
       }
     };
 
     fetchImages();
-  }, [searchQuery]);
+  }, [currentPage, searchQuery]);
 
   const handleSearch = inputValue => {
     setSearchQuery(inputValue);
   };
 
-  // const handleAddPage = () => {
-  //   setPage(prevPage => prevPage + 1);
-  //   setIsLoading(true);
-  // };
+  const handleAddPage = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
 
   return (
     <div className={css.btn}>
@@ -80,7 +85,9 @@ export const App = () => {
         </p>
       )}
       {images.length > 0 && <ImageGallery items={images} />}
-      <Btn />
+      {images.length > 0 && !loading && !error && (
+        <Btn handleAddPage={handleAddPage} />
+      )}
     </div>
   );
 };
