@@ -1,0 +1,49 @@
+/* input.module.css */
+
+.searchContainer {
+  max-width: 20rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  margin: 1rem auto;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 20rem;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.125rem solid rgb(50, 145, 223);
+  padding: 0.5rem 0;
+}
+
+.inputField {
+  flex-grow: 1;
+  appearance: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: #4a5568;
+  margin-right: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.5;
+  outline: none;
+}
+
+.submitButton {
+  flex-shrink: 0;
+  background: rgb(50, 145, 223);
+  border: 0.125rem solid rgb(50, 145, 223);
+  color: #ffffff;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background: rgb(51, 130, 194);
+  border: 0.125rem solid rgb(51, 130, 194);
+}
