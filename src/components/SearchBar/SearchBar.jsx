@@ -36,7 +36,7 @@ export const SearchBar = () => {
               </button>
             </div>
 
-            <Toaster containerStyle={{ marginTop: 50 }} />
+            <Toaster containerStyle={{ marginTop: 40 }} />
           </form>
         </div>
       </header>
