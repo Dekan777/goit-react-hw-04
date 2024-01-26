@@ -6,12 +6,15 @@
   gap: 10px;
   padding-bottom: 15px;
 }
-
+.hiden {
+  overflow: hidden; /* Обрезаем контент, выходящий за пределы границы контейнера */
+  border-radius: 10px;
+}
 .container {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 20px hsl(242deg 11.12% 60.55% / 50%);
-  padding: 10px;
+  position: relative;
 }
 
 .container img {
@@ -19,19 +22,24 @@
   height: 250px;
   border-radius: 10px;
   margin-bottom: 7px;
+  transition: transform 0.3s ease; /* Плавное изменение размера */
+}
+
+.container:hover img {
+  transform: scale(1.2); /* Увеличение изображения при наведении */
 }
 
 .containerUl {
   list-style: none;
   padding: 0;
 }
+
 .coneinerLiTop {
   list-style: none;
 }
 
 .textLi {
   margin-bottom: 5px;
-
   display: flex;
 }
 
@@ -44,6 +52,7 @@
   text-decoration: none;
   color: #007bff;
 }
+
 .containerUl span {
   font-weight: bold; /* Делаем текст жирным */
   margin-right: 5px;

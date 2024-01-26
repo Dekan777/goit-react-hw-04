@@ -5,11 +5,9 @@ export const ImageGallery = ({ items }) => (
     {items.map(item => (
       <li className={css.coneinerLiTop} key={item.id}>
         <div className={css.container}>
-          {/* <img src={item.urls.small} alt={item.alt_description} /> */}
-          <img
-            src={`${item.urls.small}&fit=crop&w=400`}
-            alt={item.alt_description}
-          />
+          <div className={css.hiden}>
+            <img src={item.urls.small} alt={item.alt_description} />
+          </div>
 
           <div className={css.containerUl}>
             <ul className={css.containerUl}>
