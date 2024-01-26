@@ -1,0 +1,50 @@
+.containerLiTopi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 15px;
+  gap: 10px;
+  padding-bottom: 15px;
+}
+
+.container {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px hsl(242deg 11.12% 60.55% / 50%);
+  padding: 10px;
+}
+
+.container img {
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  margin-bottom: 7px;
+}
+
+.containerUl {
+  list-style: none;
+  padding: 0;
+}
+.coneinerLiTop {
+  list-style: none;
+}
+
+.textLi {
+  margin-bottom: 5px;
+
+  display: flex;
+}
+
+.containerUl p {
+  margin: 0;
+  margin-right: 5px;
+}
+
+.containerUl a {
+  text-decoration: none;
+  color: #007bff;
+}
+.containerUl span {
+  font-weight: bold; /* Делаем текст жирным */
+  margin-right: 5px;
+}

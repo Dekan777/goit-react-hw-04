@@ -1,22 +1,29 @@
+import css from './ImageGallery.module.css';
+
 export const ImageGallery = ({ items }) => (
-  <ul>
+  <ul className={css.containerLiTopi}>
     {items.map(item => (
-      <li key={item.id}>
-        <div>
-          <img src={item.urls.small} alt={item.alt_description} />
-          <div>
-            <ul>
-              <li>
-                <p>Author photo:</p>
-                <strong>{item.user.name}</strong>
+      <li className={css.coneinerLiTop} key={item.id}>
+        <div className={css.container}>
+          {/* <img src={item.urls.small} alt={item.alt_description} /> */}
+          <img
+            src={`${item.urls.small}&fit=crop&w=400`}
+            alt={item.alt_description}
+          />
+
+          <div className={css.containerUl}>
+            <ul className={css.containerUl}>
+              <li className={css.textLi}>
+                <p>Author photo: </p>
+                <span>{item.user.name}</span>
               </li>
-              <li>
+              <li className={css.textLi}>
                 <p>Total photos by author: </p>
-                {item.user.total_photos}
+                <span>{item.user.total_photos}</span>
               </li>
-              <li>
-                <p>Likes: </p>
-                {item.likes}
+              <li className={css.textLi}>
+                <p>Likes:</p>
+                <span>{item.likes}</span>
               </li>
               <li>
                 <a

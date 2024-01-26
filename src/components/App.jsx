@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import css from './App.module.css';
+
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api.unsplash.com/';
 
@@ -14,6 +14,7 @@ export const App = () => {
       const clientId = '3Zba2qXtOr_E0rNXT3JHdHzbbWgVSBtiHasHiQngoL8';
       const page = 1;
       const orientation = 'landscape';
+      const numberPage = 12;
 
       try {
         const response = await axios.get(
@@ -24,6 +25,7 @@ export const App = () => {
               client_id: clientId,
               page: page,
               orientation: orientation,
+              per_page: numberPage,
             },
           }
         );
@@ -42,7 +44,7 @@ export const App = () => {
   };
 
   return (
-    <div className={css.container}>
+    <div>
       <SearchBar onSearch={handleSearch} />
 
       {images.length > 0 && <ImageGallery items={images} />}
