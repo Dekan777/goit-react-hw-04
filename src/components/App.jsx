@@ -45,7 +45,12 @@ export const App = () => {
           }
         );
 
-        setImages(prevImages => [...prevImages, ...response.data.results]);
+        if (currentPage === 1) {
+          setImages(response.data.results);
+        } else {
+          // If it's not a new search, append to the existing images
+          setImages(prevImages => [...prevImages, ...response.data.results]);
+        }
       } catch (error) {
         setError(true);
       } finally {
@@ -57,6 +62,8 @@ export const App = () => {
   }, [currentPage, searchQuery]);
 
   const handleSearch = inputValue => {
+    setImages([]);
+    setCurrentPage(1);
     setSearchQuery(inputValue);
   };
 
