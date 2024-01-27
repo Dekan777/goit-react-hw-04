@@ -12,9 +12,12 @@ import { ImageModal } from './ImageModal/ImageModal';
 export const App = () => {
   const [images, setImages] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [totalPages, setTotalPages] = useState(0);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
@@ -44,7 +47,8 @@ export const App = () => {
             },
           }
         );
-
+        const totalPages = response.data.total_pages;
+        setTotalPages(totalPages);
         setImages(prevImages => [...prevImages, ...response.data.results]);
       } catch (error) {
         setError(true);
@@ -87,7 +91,7 @@ export const App = () => {
         <ImageGallery items={images} onImageClick={openModal} />
       )}
 
-      {images.length > 0 && !loading && !error && (
+      {images.length > 0 && currentPage < totalPages && (
         <Btn handleAddPage={handleAddPage} />
       )}
       <ImageModal
