@@ -1,26 +1,28 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+axios.defaults.baseURL = 'https://api.unsplash.com/';
+import css from './App.module.css';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-// import { TailSpin } from 'react-loader-spinner';
-import css from './App.module.css';
-import axios from 'axios';
 import { Btn } from './Btn/Btn';
-axios.defaults.baseURL = 'https://api.unsplash.com/';
 import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Loader } from './Loader/Loader';
+import Modal from 'react-modal';
+// import { ImageModal } from './ImageModal/ImageModal';
 
 export const App = () => {
   const [images, setImages] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
       const clientId = '3Zba2qXtOr_E0rNXT3JHdHzbbWgVSBtiHasHiQngoL8';
-
       const orientation = 'landscape';
       const numberPage = 12;
 
@@ -49,7 +51,6 @@ export const App = () => {
         setError(true);
       } finally {
         setLoading(false);
-        // setSearch(page);
       }
     };
 
@@ -64,15 +65,38 @@ export const App = () => {
     setCurrentPage(prevPage => prevPage + 1);
   };
 
+  const openModal = imageUrl => {
+    setSelectedImageUrl(imageUrl);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className={css.btn}>
       <SearchBar onSearch={handleSearch} />
+
       <Loader loading={loading} />
+
       {error && <ErrorMessage />}
-      {images.length > 0 && <ImageGallery items={images} />}
+
+      {images.length > 0 && (
+        <ImageGallery items={images} onImageClick={openModal} />
+      )}
+
       {images.length > 0 && !loading && !error && (
         <Btn handleAddPage={handleAddPage} />
       )}
+      {/* <ImageModal /> */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Image Modal"
+      >
+        <img src={selectedImageUrl} alt="Enlarged" />
+      </Modal>
     </div>
   );
 };

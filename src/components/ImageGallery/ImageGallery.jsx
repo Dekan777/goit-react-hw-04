@@ -1,12 +1,16 @@
 import css from './ImageGallery.module.css';
 
-export const ImageGallery = ({ items }) => (
+export const ImageGallery = ({ items, onImageClick }) => (
   <ul className={css.containerLiTopi}>
     {items.map(item => (
       <li className={css.coneinerLiTop} key={item.id}>
         <div className={css.container}>
           <div className={css.hiden}>
-            <img src={item.urls.small} alt={item.alt_description} />
+            <img
+              src={item.urls.small}
+              alt={item.alt_description}
+              onClick={() => onImageClick(item.urls.regular)}
+            />
           </div>
 
           <div className={css.containerUl}>
