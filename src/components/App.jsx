@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { TailSpin } from 'react-loader-spinner';
+// import { TailSpin } from 'react-loader-spinner';
 import css from './App.module.css';
 import axios from 'axios';
 import { Btn } from './Btn/Btn';
 axios.defaults.baseURL = 'https://api.unsplash.com/';
 import { ErrorComponent } from './ErrorMessage/ErrorMessage';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -66,20 +67,7 @@ export const App = () => {
   return (
     <div className={css.btn}>
       <SearchBar onSearch={handleSearch} />
-      <div className={css.spiner}>
-        {loading && (
-          <TailSpin
-            visible={true}
-            height="50"
-            width="50"
-            color="#2da4c4"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        )}
-      </div>
+      <Loader loading={loading} />
       {error && <ErrorComponent />}
       {images.length > 0 && <ImageGallery items={images} />}
       {images.length > 0 && !loading && !error && (
