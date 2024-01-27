@@ -7,8 +7,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Btn } from './Btn/Btn';
 import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Loader } from './Loader/Loader';
-import Modal from 'react-modal';
-// import { ImageModal } from './ImageModal/ImageModal';
+import { ImageModal } from './ImageModal/ImageModal';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -89,14 +88,11 @@ export const App = () => {
       {images.length > 0 && !loading && !error && (
         <Btn handleAddPage={handleAddPage} />
       )}
-      {/* <ImageModal /> */}
-      <Modal
+      <ImageModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Image Modal"
-      >
-        <img src={selectedImageUrl} alt="Enlarged" />
-      </Modal>
+        imageUrl={selectedImageUrl}
+      />
     </div>
   );
 };
