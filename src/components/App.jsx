@@ -45,12 +45,7 @@ export const App = () => {
           }
         );
 
-        if (currentPage === 1) {
-          setImages(response.data.results);
-        } else {
-          // If it's not a new search, append to the existing images
-          setImages(prevImages => [...prevImages, ...response.data.results]);
-        }
+        setImages(prevImages => [...prevImages, ...response.data.results]);
       } catch (error) {
         setError(true);
       } finally {
