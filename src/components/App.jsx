@@ -6,6 +6,7 @@ import css from './App.module.css';
 import axios from 'axios';
 import { Btn } from './Btn/Btn';
 axios.defaults.baseURL = 'https://api.unsplash.com/';
+import { ErrorComponent } from './ErrorMessage/ErrorMessage';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -79,11 +80,7 @@ export const App = () => {
           />
         )}
       </div>
-      {error && (
-        <p className={css.error}>
-          Whoops, something went wrong! Please try reloading this page!
-        </p>
-      )}
+      {error && <ErrorComponent />}
       {images.length > 0 && <ImageGallery items={images} />}
       {images.length > 0 && !loading && !error && (
         <Btn handleAddPage={handleAddPage} />
