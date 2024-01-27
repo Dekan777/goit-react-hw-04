@@ -1,6 +1,6 @@
 import css from './Loader.module.css';
-import { TailSpin } from 'react-loading-icons'; // Подставьте правильный путь к вашей библиотеке для отрисовки спиннера
 
+import { TailSpin } from 'react-loader-spinner';
 export const Loader = ({ loading }) => (
   <div className={css.spinner}>
     {loading && (

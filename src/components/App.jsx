@@ -6,7 +6,7 @@ import css from './App.module.css';
 import axios from 'axios';
 import { Btn } from './Btn/Btn';
 axios.defaults.baseURL = 'https://api.unsplash.com/';
-import { ErrorComponent } from './ErrorMessage/ErrorMessage';
+import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Loader } from './Loader/Loader';
 
 export const App = () => {
@@ -68,7 +68,7 @@ export const App = () => {
     <div className={css.btn}>
       <SearchBar onSearch={handleSearch} />
       <Loader loading={loading} />
-      {error && <ErrorComponent />}
+      {error && <ErrorMessage />}
       {images.length > 0 && <ImageGallery items={images} />}
       {images.length > 0 && !loading && !error && (
         <Btn handleAddPage={handleAddPage} />
