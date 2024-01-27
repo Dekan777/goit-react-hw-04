@@ -33,7 +33,7 @@ export const ImageGallery = ({ items, onImageClick }) => (
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Downloads
+                  Open full size
                 </a>
               </li>
             </ul>
